@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Row,Col,Badge} from 'antd';
+import {Row,Col,Badge,List} from 'antd';
 
 const ShoppingListItem = (props)=>{
     
     const {name,sum,labels} = props;
     return(
-    <Row type="flex" >
+        <List.Item>
         <Col span={12}>
             {props.name}
         </Col>
@@ -15,7 +15,8 @@ const ShoppingListItem = (props)=>{
         <Col span={4}>
             {props.sum}
         </Col>
-    </Row>);
+        </List.Item>
+     );
 }
 
 export default ShoppingListItem;
