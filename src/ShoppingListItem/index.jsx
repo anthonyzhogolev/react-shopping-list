@@ -6,13 +6,13 @@ const ShoppingListItem = (props)=>{
     const {name,sum,labels} = props;
     return(
     <Row type="flex" >
-        <Col span={6}>
+        <Col span={12}>
             {props.name}
         </Col>
-        <Col span={4}>
+        <Col span={8}>
             
         </Col>
-        <Col span={2}>
+        <Col span={4}>
             {props.sum}
         </Col>
     </Row>);
