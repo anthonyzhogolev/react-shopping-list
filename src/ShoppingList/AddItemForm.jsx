@@ -19,9 +19,11 @@ class HorizontalLoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                
+                const id=new Date().getTime();
+                this.props.handleSubmit({id,...values});
             }
         });
+        
     }
 
     render() {

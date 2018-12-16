@@ -42,6 +42,13 @@ class ShoppingList extends React.Component {
         return items;
     }
 
+    handleAddFormSubmit=(item)=>{
+        this.props.addItem(item);
+        this.setState({addFormVisible:false});
+    }
+
+    
+
     render() {
 
         const items = this.applyFilters(this.state.items);
@@ -70,7 +77,12 @@ class ShoppingList extends React.Component {
                                             <Row>
                                                 <Col span={4} offset={4}>
                                                     <Popover
-                                                        content={<AddItemForm/>}
+                                                        content={
+                                                            <AddItemForm 
+                                                                handleSubmit={this.handleAddFormSubmit} 
+                                                                handleCancel={()=>this.setState({addFormVisible:false})}
+                                                            />
+                                                            }
                                                         title="Add new Item"
                                                         trigger="click"
                                                         visible={this.state.addFormVisible}
@@ -79,7 +91,7 @@ class ShoppingList extends React.Component {
                                                         <Button 
                                                             block 
                                                             onClick={()=>this.setState({addFormVisible:true})}
-                                                            disabled={this.state.addFormVisible!==true}
+                                                            disabled={this.state.addFormVisible}
                                                         >
                                                             Add
                                                         </Button>

@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
-import ShoppingListComponent from './component';
+import ShoppingListComponent from './List';
 import { connect } from 'react-redux'
 import { dispatch } from 'rxjs/internal/observable/pairs';
-import {getSortedItems} from '../reducers';
+import { getSortedItems } from '../reducers';
+import { chageOrder, addItem, addItemOrder } from '../actions';
 // export default ShoppingListComponent;
 
 
-const mapStateToProps = (state,ownProps) => {
-    console.log('mapState',state,ownProps);
-    
+const mapStateToProps = (state, ownProps) => {
+    console.log('mapState', state, ownProps);
+
     return {
         items: getSortedItems(state)
     }
 }
 
-const chageOrder = (id,order)=>{
-    console.log('actionChangeOrder',id,order);
-    return ({type:"CHANGE_ORDER",payload:{id:id,order:order}})
-}
+ 
 
-const mapDispatchToProps = (dispatch)=>(
+const mapDispatchToProps = (dispatch) => (
     {
-        changeOrder:(id,order)=> (dispatch(chageOrder(id,order)))        
+        changeOrder: (id, order) => (dispatch(chageOrder(id, order))),
+        addItem: (item) => {
+            dispatch(addItem(item.id, item.name, item.qty));
+            dispatch(addItemOrder(item.id));
+        },
     }
 )
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ShoppingListComponent);
+)(ShoppingListComponent);

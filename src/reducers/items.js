@@ -1,8 +1,16 @@
-const itemOrders = (state=[],action)=>{
+const items = (state=[],action)=>{
+    switch(action.type){
+        case 'ADD_ITEM':
+            console.log('addItemReduce',state,action.payload);
+            return [...state,action.payload];
+        default:
+            return state;
+    }
+
     return state;
 }
 
-export default itemOrders;
+export default items;
 
 export const getSortedItems = (state,params) => {
     console.log('getSortItems item.js',state,params);
