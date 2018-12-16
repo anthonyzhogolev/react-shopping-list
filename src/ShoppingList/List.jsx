@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { List, Button, Row, Col, Popover } from 'antd';
+import { List, Button, Row, Col, Popover,Dropdown ,Modal} from 'antd';
 
 import ShoppingListItem from '../ShoppingListItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import FilterInput from './FilterInput';
 import AddItemForm from './AddItemForm';
-
+import ItemMenu from './ItemMenu';
 class ShoppingList extends React.Component {
     constructor(props) {
 
@@ -47,7 +47,30 @@ class ShoppingList extends React.Component {
         this.setState({addFormVisible:false});
     }
 
-    
+    confirm( context,onOk) {
+        Modal.confirm({
+          title: null,
+          content: context,
+          okText: 'OK',
+          cancelText: 'CANCEL',
+          onOk:onOk,
+
+        });
+      }
+
+    deleteItem = (itemId)=>{
+        this.confirm(
+            "Are You sure you want delete item",
+            ()=>this.props.deleteItem(itemId)
+        );
+    }
+
+    markAsReadItem = (itemId)=> {
+        this.confirm(
+            "Are You sure you want mark item as read",
+            ()=>this.props.deleteItem(itemId)
+        );
+    }
 
     render() {
 
@@ -105,26 +128,39 @@ class ShoppingList extends React.Component {
                                         renderItem={(item, index) => {
 
                                             return (
+                                                
                                                 <Draggable draggableId={item.id} index={index}>
                                                     {
                                                         (provided, snapshot) => (
+                                                            <Dropdown                                                                 
+                                                                overlay={
+                                                                    <ItemMenu
+                                                                        deleteHandle ={()=>this.deleteItem(item.id)} 
+                                                                        markAsReadHandle ={()=>this.markAsReadItem(item.id)} 
+                                                                    />
+                                                                } 
+                                                                trigger={['contextMenu']}
+                                                            > 
                                                             <div
                                                                 ref={provided.innerRef}
                                                                 {...provided.draggableProps}
                                                                 {...provided.dragHandleProps}
                                                             >
-                                                                <ShoppingListItem
-                                                                    key={item.id}
-                                                                    id={item.id}
-                                                                    name={item.name}
-                                                                    qty={item.qty}
-                                                                    labels={[]}
-                                                                />
+                                                                
+                                                                    <ShoppingListItem
+                                                                        key={item.id}
+                                                                        id={item.id}
+                                                                        name={item.name}
+                                                                        qty={item.qty}
+                                                                        labels={[]}
+                                                                    />
+                                                               
                                                             </div>
+                                                            </Dropdown>
                                                         )
                                                     }
 
-                                                </Draggable>
+                                                </Draggable> 
                                             )
                                         }
                                         }

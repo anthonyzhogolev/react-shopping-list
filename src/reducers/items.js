@@ -1,8 +1,10 @@
 const items = (state=[],action)=>{
     switch(action.type){
-        case 'ADD_ITEM':
-            console.log('addItemReduce',state,action.payload);
+        case 'ADD_ITEM':            
             return [...state,action.payload];
+        case 'DELETE_ITEM':
+            console.log('reducerDeleteItem', state.filter((item)=>(item.id!==action.payload.id)));
+            return state.filter((item)=>(item.id!==action.payload.id));
         default:
             return state;
     }

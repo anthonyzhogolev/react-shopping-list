@@ -3,7 +3,7 @@ import ShoppingListComponent from './List';
 import { connect } from 'react-redux'
 import { dispatch } from 'rxjs/internal/observable/pairs';
 import { getSortedItems } from '../reducers';
-import { chageOrder, addItem, addItemOrder } from '../actions';
+import { chageOrder, addItem, addItemOrder,deleteItem,deleteItemOrder } from '../actions';
 // export default ShoppingListComponent;
 
 
@@ -24,6 +24,10 @@ const mapDispatchToProps = (dispatch) => (
             dispatch(addItem(item.id, item.name, item.qty));
             dispatch(addItemOrder(item.id));
         },
+        deleteItem: (id) => {
+            dispatch(deleteItemOrder(id));
+            dispatch(deleteItem(id))
+        }
     }
 )
 
