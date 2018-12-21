@@ -3,14 +3,15 @@ import ShoppingListComponent from './List';
 import { connect } from 'react-redux'
 import { dispatch } from 'rxjs/internal/observable/pairs';
 import { getSortedItems } from '../reducers';
-import { chageOrder, addItem, addItemOrder,deleteItem,deleteItemOrder } from '../actions';
+import { chageOrder, addItem, addItemOrder,deleteItem,deleteItemOrder, markAsReadItem } from '../actions';
 // export default ShoppingListComponent;
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('mapState', state, ownProps);
-
+    
+    console.log('mapStateToPropsList',state.items);
     return {
+        
         items: getSortedItems(state)
     }
 }
@@ -27,6 +28,9 @@ const mapDispatchToProps = (dispatch) => (
         deleteItem: (id) => {
             dispatch(deleteItemOrder(id));
             dispatch(deleteItem(id))
+        },
+        markAsReadItem: (id) => {
+            dispatch(markAsReadItem(id));
         }
     }
 )

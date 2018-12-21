@@ -4,7 +4,7 @@ import { Menu } from 'antd';
  const ItemMenu = (props) => (
     <Menu 
         onClick={(e)=>{
-            console.log('MenuProps',props);
+            
             if (e.key === 'delete') {
                  props.deleteHandle();
                  

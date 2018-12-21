@@ -4,27 +4,30 @@ const initialState={
             id:1,
             name:'Item1',
             qty:1,
-            isReaded:false
+            isRead:false
         },
         {
             id:2,
             name:'Item2',
             qty:2,
-            isReaded:false
+            isRead:false
         },
         {
             id:3,
             name:'Item3',
             qty:3,
-            isReaded:false
+            isRead:false
         },
     ],
     itemOrders:[
-        {itemId:1,order:2},
-        {itemId:2,order:1},
-        {itemId:3,order:0},
+        {id:1,itemId:1,order:2},
+        {id:2,itemId:2,order:1},
+        {id:3,itemId:3,order:0},
     ],
-
+    sortBy:{
+        columnName:null,
+        direction:null
+    }
 
 }
 

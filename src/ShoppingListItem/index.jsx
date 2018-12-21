@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import {Row,Col,Badge,List} from 'antd';
+import {List,Col,Badge,Row} from 'antd';
 
 const ShoppingListItem = (props)=>{
     
-    const {name,sum,labels} = props;
+    // const {name,sum,labels} = props;
     return(
-        <List.Item>
+        <List.Item justify="start">
+        
+        
             
 
-        <Col span={12} >
-            {props.name}
+        <Col span={4} >
+            {props.name} - 
+            {props.isRead && "isRead"}
         </Col>
         
         <Col span={4} offset={4}>
             {props.qty}
         </Col>
          
+        
+        
         </List.Item>
      );
 }

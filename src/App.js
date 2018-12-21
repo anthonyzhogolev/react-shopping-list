@@ -12,7 +12,7 @@ import rootReducer from './reducers';
 import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css';
-console.log('iniState',initialState);
+
 let store = createStore(rootReducer,initialState);
 
 class App extends Component {
@@ -21,6 +21,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
+            
            <ShoppingList />
         </div>
       </Provider>

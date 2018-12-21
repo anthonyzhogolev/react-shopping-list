@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { List, Button, Row, Col, Popover,Dropdown ,Modal} from 'antd';
+import { Row, Button,List,   Col, Popover,Dropdown ,Modal} from 'antd';
 
 import ShoppingListItem from '../ShoppingListItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import FilterInput from './FilterInput';
 import AddItemForm from './AddItemForm';
 import ItemMenu from './ItemMenu';
+import SortingPanel from '../SortingPanel/index';
+
 class ShoppingList extends React.Component {
     constructor(props) {
 
@@ -24,7 +26,7 @@ class ShoppingList extends React.Component {
     }
 
     onDragEnd = result => {
-        console.log('onDragEnd:', result);
+
         const newOrder = result.destination.index;
         const id = result.draggableId;
         this.props.changeOrder(id, newOrder);
@@ -68,13 +70,14 @@ class ShoppingList extends React.Component {
     markAsReadItem = (itemId)=> {
         this.confirm(
             "Are You sure you want mark item as read",
-            ()=>this.props.deleteItem(itemId)
+            ()=>this.props.markAsReadItem(itemId)
         );
     }
 
     render() {
 
         const items = this.applyFilters(this.state.items);
+        
         return (
             <DragDropContext
                 onDragEnd={this.onDragEnd}
@@ -93,7 +96,10 @@ class ShoppingList extends React.Component {
                                                 <FilterInput
                                                     onChange={(value) => this.setState({ filterName: value })}
                                                 />
+                                                 <SortingPanel/>
                                             </div>
+                                             
+
                                         }
                                         footer={
                                             <div>
@@ -129,7 +135,7 @@ class ShoppingList extends React.Component {
 
                                             return (
                                                 
-                                                <Draggable draggableId={item.id} index={index}>
+                                                <Draggable  draggableId={item.id} index={index}>
                                                     {
                                                         (provided, snapshot) => (
                                                             <Dropdown                                                                 
@@ -141,7 +147,8 @@ class ShoppingList extends React.Component {
                                                                 } 
                                                                 trigger={['contextMenu']}
                                                             > 
-                                                            <div
+                                                            <div 
+                                                                
                                                                 ref={provided.innerRef}
                                                                 {...provided.draggableProps}
                                                                 {...provided.dragHandleProps}
@@ -152,6 +159,7 @@ class ShoppingList extends React.Component {
                                                                         id={item.id}
                                                                         name={item.name}
                                                                         qty={item.qty}
+                                                                        isRead={item.isRead}
                                                                         labels={[]}
                                                                     />
                                                                
