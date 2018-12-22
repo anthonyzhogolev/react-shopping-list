@@ -6,15 +6,20 @@ import sortBy from './sortBy';
 import filters from './filters';
 
 export default combineReducers({
-   items, itemOrders, sortBy
+   items, itemOrders, sortBy,filters
 });
 
 export const getSortedItems = (state) => {
-   if(state.sortBy.columnName!==null){
-      console.log('sortingColumn...')
-      return fromItems.getColumnSortedItems(state.items,state.sortBy.columnName,state.sortBy.direction);
+   console.log('getSortedItems',state);
+   
+   const filteredItems = fromItems.filterItems(state.items,state.filters);
+   
+   if(state.sortBy.columnName!==null){       
+      return fromItems.getColumnSortedItems(filteredItems,state.sortBy.columnName,state.sortBy.direction);
    }
-   return (fromItems.getDndSortedItems(state.items, state.itemOrders))
+   const itemOrders = state.itemOrders.filter((itemOrder)=>filteredItems.find((item)=>item.id===itemOrder.itemId));
+   console.log('itemsOrders',itemOrders);
+   return (fromItems.getDndSortedItems(filteredItems, itemOrders));
 }
 
  

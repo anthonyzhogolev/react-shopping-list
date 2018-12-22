@@ -9,7 +9,7 @@ import { chageOrder, addItem, addItemOrder,deleteItem,deleteItemOrder, markAsRea
 
 const mapStateToProps = (state, ownProps) => {
     
-    console.log('mapStateToPropsList',state.items);
+    
     return {
         
         items: getSortedItems(state)

@@ -3,7 +3,7 @@ import { Row, Button,List,   Col, Popover,Dropdown ,Modal} from 'antd';
 
 import ShoppingListItem from '../ShoppingListItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import FilterInput from './FilterInput';
+import FilterPanel from '../FilterPanel';
 import AddItemForm from './AddItemForm';
 import ItemMenu from './ItemMenu';
 import SortingPanel from '../SortingPanel/index';
@@ -33,17 +33,9 @@ class ShoppingList extends React.Component {
 
     }
 
-    onFilterInputChange = (value) => {
-        this.setState({ filterName: value });
-    }
 
-    applyFilters = (items) => {
-        if (this.state.filterName) {
-            items = items.filter(item => item.name.indexOf(this.state.filterName) > -1)
-        }
-        return items;
-    }
 
+ 
     handleAddFormSubmit=(item)=>{
         this.props.addItem(item);
         this.setState({addFormVisible:false});
@@ -76,7 +68,7 @@ class ShoppingList extends React.Component {
 
     render() {
 
-        const items = this.applyFilters(this.state.items);
+        const items = this.state.items 
         
         return (
             <DragDropContext
@@ -93,9 +85,7 @@ class ShoppingList extends React.Component {
                                     <List
                                         header={
                                             <div>
-                                                <FilterInput
-                                                    onChange={(value) => this.setState({ filterName: value })}
-                                                />
+                                                <FilterPanel/>
                                                  <SortingPanel/>
                                             </div>
                                              

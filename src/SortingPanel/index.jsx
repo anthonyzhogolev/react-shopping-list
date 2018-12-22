@@ -7,7 +7,7 @@ import { changeSortBy } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
     
-    console.log('mapStateToProps',{...state.sortBy});
+    
     return {
         ...state.sortBy,
     }
@@ -18,9 +18,9 @@ const mergeProps = (stateProps,dispatchProps) => {
     const {dispatch} = dispatchProps;
     return {
         clickHandle: (columnName) =>{
-            console.log('mergeProps',stateProps);
+             
             if(stateProps.columnName==columnName){
-                console.log('mergeProps===');
+                 
                 dispatch(changeSortBy(columnName,(stateProps.direction==='ASC')?'DESC':'ASC'));
             } else {
                 dispatch(changeSortBy(columnName,'ASC'));

@@ -23,14 +23,16 @@ export const deleteItemOrder = (itemId) => {
     return ({ type: "DELETE_ITEM_ORDER", payload: { itemId } });
 }
 
-export const changeFilter = (filterName, filterValue) => {
-    return ({ type: "CHANGE_FILTER",payload:{filterName,filterValue}});
-}
+ 
 
 export const changeSortBy = (columnName,direction) => {
     return ({ type: "CHANGE_SORT_BY",payload:{columnName,direction}});
 }
 
 export const setFilter = (filterName,filterValue) => {
-    return ({type:"SET_FILTER",payload:{"filterName":filterName,"filterValue":filterValue});
+    
+    return ({type:"SET_FILTER",payload:{"filterName":filterName,"filterValue":filterValue}});
+}
+export const unsetFilter = (filterName,filterValue) => {
+    return ({type:"UNSET_FILTER",payload:{"filterName":filterName}});
 }
