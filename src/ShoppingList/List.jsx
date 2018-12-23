@@ -86,8 +86,13 @@ class ShoppingList extends React.Component {
                                     <List
                                         header={
                                             <div>
-                                                <FilterPanel/>
-                                                 <SortingPanel/>
+                                                 
+                                                     <FilterPanel/>     
+                                                
+                                                 
+                                                     <SortingPanel/> 
+                                                 
+                                                 
                                             </div>
                                              
 
@@ -120,7 +125,7 @@ class ShoppingList extends React.Component {
                                             </Row>
                                             </div>
                                         }
-                                        bordered
+                                        bordered={true}
                                         dataSource={items}
                                         renderItem={(item, index) => {
 

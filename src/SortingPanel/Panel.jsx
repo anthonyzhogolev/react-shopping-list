@@ -5,15 +5,33 @@ import { Icon } from 'react-fa'
 const SortingPanel = (props) => {
 
     return (
-        <Row  >
+        <Row 
+            style={{
+                "margin-top":"20px"
+            }}
+         >
             <Col span={8} onClick={() => { props.clickHandle('name') }} >
 
-                <b style={{ "padding-right": "10px" }}>Name</b>
+                <b 
+                    style={
+                        { 
+                            "padding-right": "10px" 
+                        }}
+                >
+                    Name
+                </b>
                 <Icon name="sort" />
 
             </Col>
-            <Col span={8} onClick={() => props.clickHandle('qty')}>
-                <b>Qty</b>
+            <Col span={4} onClick={() => props.clickHandle('qty')}>
+                <b 
+                    style={
+                        { 
+                            "padding-right": "10px" 
+                        }}
+                >
+                    Qty
+                </b>
                 <Icon name="sort" />
             </Col>
 
@@ -21,7 +39,7 @@ const SortingPanel = (props) => {
                 <b>isRead</b>
             </Col>
 
-            <Col span={4}>
+            <Col span={8}>
                 <b>Labels</b>
             </Col>
         </Row>
