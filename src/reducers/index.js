@@ -26,9 +26,8 @@ export const getSortedItems = (state) => {
 export const getItems =(state)=>{
    
    const mainState = state;
-   console.log('getItemsState:',mainState);
+   
    const items = getSortedItems(mainState).map((item)=>{
-
       const itemLabels = mainState.labels.filter(
          (label)=>(
             mainState.itemLabels.filter(
@@ -37,7 +36,6 @@ export const getItems =(state)=>{
          )
       );
       return Object.assign(item,{labels:itemLabels});
-   });
-   console.log('getItems',items);
+   });   
    return items;
 }

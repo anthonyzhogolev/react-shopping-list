@@ -23,45 +23,45 @@ export default items;
 export const getDndSortedItems = (items, itemOrders) => {
 
     const res = [];
-    const sortedItemOrders = itemOrders.slice().sort((a,b)=>{
-        if(a.order<b.order){
+    const sortedItemOrders = itemOrders.slice().sort((a, b) => {
+        if (a.order < b.order) {
             return -1;
         }
-        if(a.order>b.order){
+        if (a.order > b.order) {
             return 1;
         }
         return 0;
     });
- 
-    for (let index in sortedItemOrders) {        
+
+    for (let index in sortedItemOrders) {
         const itemOrder = sortedItemOrders[index];
-        res[index] = items.find((item) => (item.id == itemOrder.itemId));        
+        res[index] = items.find((item) => (item.id == itemOrder.itemId));
         res[index].order = itemOrder.order;
     }
- 
+
     return res;
 }
 
-export const filterItems = (items,filters)=>{
- 
-    if(filters.hasOwnProperty('name') && filters.name!==null){
-       
+export const filterItems = (items, filters) => {
+
+    if (filters.hasOwnProperty('name') && filters.name !== null) {
         items = items.slice().filter(item => item.name.indexOf(filters.name) > -1)
-    }    
-    if(filters.hasOwnProperty('isRead') && filters.isRead!==null){
-        items = items.slice().filter(item => item.isRead===filters.isRead);
     }
- 
+    
+    if (filters.hasOwnProperty('isRead') && filters.isRead !== null) {
+        items = items.slice().filter(item => item.isRead === filters.isRead);
+    }
+
     return items;
 }
 
 export const getColumnSortedItems = (items, columnName, direction) => {
 
-    const sorted =  items.slice().sort((a, b) => {
+    const sorted = items.slice().sort((a, b) => {
         if (a[columnName] === b[columnName]) {
             return 0;
         }
-    
+
         if (a[columnName] < b[columnName]) {
             return (direction === 'ASC') ? -1 : 1;
         }
@@ -70,6 +70,6 @@ export const getColumnSortedItems = (items, columnName, direction) => {
         }
 
     })
-     
+
     return sorted;
 }

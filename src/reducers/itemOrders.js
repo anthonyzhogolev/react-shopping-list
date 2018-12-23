@@ -2,7 +2,7 @@
 
 
 const itemOrders = (state = [], action) => {
-    
+
     switch (action.type) {
         case 'ADD_ITEM_ORDER':
             const maxOrder = Math.max.apply(Math, state.map(function (itemOrder) { return itemOrder.order; }));

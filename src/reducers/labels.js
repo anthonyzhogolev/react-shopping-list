@@ -1,6 +1,5 @@
-const labels = (state=[],action)=>{
-    switch(action.type){
-        
+const labels = (state = [], action) => {
+    switch (action.type) {
         default:
             return state;
     }

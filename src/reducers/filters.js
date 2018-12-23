@@ -4,9 +4,7 @@ const filters = (state = [], action) => {
         case 'SET_FILTER':
             const { filterName, filterValue } = action.payload;
             return Object.assign({}, state, { [filterName]: filterValue });
-        case 'UNSET_FILTER':
-
-            console.log('unsetfilterReduser',Object.assign({}, state, { [action.payload.filterName]: null }));
+        case 'UNSET_FILTER':            
             return Object.assign({}, state, { [action.payload.filterName]: null });
         default:
             return state;
