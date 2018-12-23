@@ -26,9 +26,10 @@ class ShoppingList extends React.Component {
     }
 
     onDragEnd = result => {
-
+        
         const newOrder = result.destination.index;
         const id = result.draggableId;
+        this.props.unsetSortBy();
         this.props.changeOrder(id, newOrder);
 
     }
@@ -146,11 +147,7 @@ class ShoppingList extends React.Component {
                                                                 
                                                                     <ShoppingListItem
                                                                         key={item.id}
-                                                                        id={item.id}
-                                                                        name={item.name}
-                                                                        qty={item.qty}
-                                                                        isRead={item.isRead}
-                                                                        labels={[]}
+                                                                        {...item}
                                                                     />
                                                                
                                                             </div>

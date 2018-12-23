@@ -29,6 +29,10 @@ export const changeSortBy = (columnName,direction) => {
     return ({ type: "CHANGE_SORT_BY",payload:{columnName,direction}});
 }
 
+export const unsetSortBy = () => {
+    return ({type:"UNSET_SORT_BY",payload:{}});
+}
+
 export const setFilter = (filterName,filterValue) => {
     
     return ({type:"SET_FILTER",payload:{"filterName":filterName,"filterValue":filterValue}});
