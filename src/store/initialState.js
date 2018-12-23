@@ -31,7 +31,16 @@ const initialState = {
     filters: {
         name: null,
         isRead:null,        
-    }
+    },
+    labels: [
+        {id:1,name:"Label1",color:"#4286f4"},
+        {id:2,name:"Label2",color:"#f45641"},
+        {id:3,name:"Label3",color:"#41f467"}
+    ],
+    itemLabels:[
+        {id:1,labelId:1,itemId:1},
+        {id:2,labelId:2,itemId:1}
+    ]
 
 }
 

@@ -40,3 +40,7 @@ export const setFilter = (filterName,filterValue) => {
 export const unsetFilter = (filterName,filterValue) => {
     return ({type:"UNSET_FILTER",payload:{"filterName":filterName}});
 }
+
+export const addItemLabel = (itemId,labelId)=>{
+    return ({type:"ADD_ITEM_LABEL",payload:{itemId,labelId}});
+}

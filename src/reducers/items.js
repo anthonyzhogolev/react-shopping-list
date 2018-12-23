@@ -3,10 +3,8 @@ const items = (state = [], action) => {
         case 'ADD_ITEM':
             return [...state, action.payload];
         case 'DELETE_ITEM':
-
             return state.filter((item) => (item.id !== action.payload.id));
         case 'MARK_AS_READ_ITEM':
-
             return state.map(function (item) {
                 if (item.id == action.payload.id) {
                     item.isRead = true;
@@ -34,19 +32,18 @@ export const getDndSortedItems = (items, itemOrders) => {
         }
         return 0;
     });
-    console.log('dndSortedItemOrders',sortedItemOrders);
+ 
     for (let index in sortedItemOrders) {        
         const itemOrder = sortedItemOrders[index];
         res[index] = items.find((item) => (item.id == itemOrder.itemId));        
         res[index].order = itemOrder.order;
     }
-    console.log('dndItems',items,res);
+ 
     return res;
 }
 
 export const filterItems = (items,filters)=>{
-    console.log('filterItems',items,filters);
-    console.log('name',filters.hasOwnProperty('name'),filters.name!==null)
+ 
     if(filters.hasOwnProperty('name') && filters.name!==null){
        
         items = items.slice().filter(item => item.name.indexOf(filters.name) > -1)
@@ -54,7 +51,7 @@ export const filterItems = (items,filters)=>{
     if(filters.hasOwnProperty('isRead') && filters.isRead!==null){
         items = items.slice().filter(item => item.isRead===filters.isRead);
     }
-    console.log('filterItemsAfter',items);
+ 
     return items;
 }
 
