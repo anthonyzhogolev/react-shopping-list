@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import { Col, Badge, Row, Icon } from 'antd';
-import Carets from './Carets';
+import { Col, Badge, Row } from 'antd';
+import { Icon } from 'react-fa'
 
 const SortingPanel = (props) => {
 
     return (
-        <Row justify="start">
-            <Col span={4} offset={1} onClick={() => { props.clickHandle('name') }} >
-                <Row align='middle' type="flex" justify="start">
-                    <Col span={8} offset={2}>
-                        <b>Name</b>
-                    </Col>
-                    <Col span={2}  >
+        <Row  >
+            <Col span={8} onClick={() => { props.clickHandle('name') }} >
 
-                    </Col>
-                </Row>
+                <b style={{ "padding-right": "10px" }}>Name</b>
+                <Icon name="sort" />
+
             </Col>
-            <Col span={4} offset={4} onClick={() => props.clickHandle('qty')}>
+            <Col span={8} onClick={() => props.clickHandle('qty')}>
                 <b>Qty</b>
+                <Icon name="sort" />
             </Col>
 
+            <Col span={4}>
+                <b>isRead</b>
+            </Col>
+
+            <Col span={4}>
+                <b>Labels</b>
+            </Col>
         </Row>
     );
 }
