@@ -11,7 +11,7 @@ const StyledListItem = styled(List.Item)`
     background-color:#fff
 `;
 
-const ShoppingListItem = (props) => {
+function ShoppingListItem  (props)  {
 
     // const {name,sum,labels} = props;
 
